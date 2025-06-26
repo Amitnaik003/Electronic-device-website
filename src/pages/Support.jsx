@@ -2,15 +2,18 @@ const Support = () => {
   const faqs = [
     {
       question: "How can I request a custom solution?",
-      answer: "You can fill out our contact form or email us with your specific requirements. Our engineering team will get back to you within 24 hours.",
+      answer:
+        "You can fill out our contact form or email us with your specific requirements. Our engineering team will get back to you within 24 hours.",
     },
     {
       question: "Do your products come with warranty?",
-      answer: "Yes, all our products come with a 1-year standard warranty covering manufacturing defects.",
+      answer:
+        "Yes, all our products come with a 1-year standard warranty covering manufacturing defects.",
     },
     {
       question: "Can I download product datasheets online?",
-      answer: "Yes. Go to the respective product page and you'll find a datasheet download button.",
+      answer:
+        "Yes. Go to the respective product page and you'll find a datasheet download button.",
     },
   ];
 
@@ -21,16 +24,38 @@ const Support = () => {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-16 space-y-16">
-      
+    <div
+      style={{
+        maxWidth: "1200px",
+        minWidth: "100vw",
+        margin: "0 auto",
+        padding: "64px 24px",
+        backgroundColor: "#f8fafc", // light gray background
+        display: "flex",
+        flexDirection: "column",
+        gap: "64px",
+      }}
+    >
       {/* FAQ Section */}
       <section>
-        <h2 className="text-3xl font-bold text-blue-800 mb-6 text-center">Frequently Asked Questions</h2>
-        <div className="space-y-6">
+        <h2
+          style={{
+            fontSize: "1.875rem",
+            fontWeight: "bold",
+            color: "#1e40af",
+            textAlign: "center",
+            marginBottom: "1.5rem",
+          }}
+        >
+          Frequently Asked Questions
+        </h2>
+        <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
           {faqs.map((faq, index) => (
-            <div key={index} className="border-b pb-4">
-              <h3 className="text-xl font-semibold text-blue-700">{faq.question}</h3>
-              <p className="text-gray-700 mt-2">{faq.answer}</p>
+            <div key={index} style={{ borderBottom: "1px solid #e5e7eb", paddingBottom: "1rem" }}>
+              <h3 style={{ fontSize: "1.25rem", fontWeight: "600", color: "#1e3a8a" }}>
+                {faq.question}
+              </h3>
+              <p style={{ marginTop: "0.5rem", color: "#374151" }}>{faq.answer}</p>
             </div>
           ))}
         </div>
@@ -38,14 +63,38 @@ const Support = () => {
 
       {/* Downloadable Docs */}
       <section>
-        <h2 className="text-3xl font-bold text-blue-800 mb-6 text-center">Documentation Downloads</h2>
-        <ul className="space-y-4 text-lg text-blue-700 text-center">
+        <h2
+          style={{
+            fontSize: "1.875rem",
+            fontWeight: "bold",
+            color: "#1e40af",
+            textAlign: "center",
+            marginBottom: "1.5rem",
+          }}
+        >
+          Documentation Downloads
+        </h2>
+        <ul
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "1rem",
+            fontSize: "1.125rem",
+            color: "#1d4ed8",
+          }}
+        >
           {docs.map((doc, index) => (
             <li key={index}>
               <a
                 href={doc.link}
                 download
-                className="hover:underline"
+                style={{
+                  textDecoration: "none",
+                  color: "#1d4ed8",
+                }}
+                onMouseOver={(e) => (e.currentTarget.style.textDecoration = "underline")}
+                onMouseOut={(e) => (e.currentTarget.style.textDecoration = "none")}
               >
                 📄 {doc.title}
               </a>
@@ -55,11 +104,16 @@ const Support = () => {
       </section>
 
       {/* Customer Support */}
-      <section className="text-center">
-        <h2 className="text-2xl font-bold text-blue-800 mb-4">Need More Help?</h2>
-        <p className="text-lg text-gray-700">
+      <section style={{ textAlign: "center" }}>
+        <h2 style={{ fontSize: "1.5rem", fontWeight: "bold", color: "#1e40af", marginBottom: "1rem" }}>
+          Need More Help?
+        </h2>
+        <p style={{ fontSize: "1.125rem", color: "#374151" }}>
           Reach out to our technical support team at{" "}
-          <a href="mailto:support@xpertism.com" className="text-blue-700 font-medium underline">
+          <a
+            href="mailto:support@xpertism.com"
+            style={{ color: "#1d4ed8", fontWeight: "500", textDecoration: "underline" }}
+          >
             support@xpertism.com
           </a>{" "}
           or call us at <strong>+91 98765 43210</strong>

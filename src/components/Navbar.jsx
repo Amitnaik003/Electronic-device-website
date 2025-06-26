@@ -1,21 +1,107 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
+  const { pathname } = useLocation();
+
+  const navLinks = [
+    { name: "Home", to: "/" },
+    { name: "About", to: "/about" },
+    { name: "Products", to: "/products" },
+    { name: "Applications", to: "/applications" },
+    { name: "Clients", to: "/clients" },
+    { name: "Support", to: "/support" },
+    { name: "Contact", to: "/contact" },
+  ];
+
   return (
-    <nav className="bg-white shadow-md px-6 py-4 sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <Link to="/" className="text-xl font-bold text-blue-700">Xpertism</Link>
-        <div className="space-x-4">
-          <Link to="/" className="hover:text-blue-600">Home</Link>
-          <Link to="/about" className="hover:text-blue-600">About</Link>
-          <Link to="/products" className="hover:text-blue-600">Products</Link>
-          <Link to="/applications" className="hover:text-blue-600">Applications</Link>
-          <Link to="/clients" className="hover:text-blue-600">Clients</Link>
-          <Link to="/support" className="hover:text-blue-600">Support</Link>
-          <Link to="/contact" className="hover:text-blue-600">Contact</Link>
+    <>
+      <nav className="navbar">
+        <div className="navbar-container">
+          <Link to="/" className="navbar-logo">
+            <span className="logo-gray">Electro</span>
+            <span className="logo-blue">Xpertism</span>
+          </Link>
+
+          <div className="navbar-links">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                to={link.to}
+                className={`nav-link ${pathname === link.to ? "active-link" : ""}`}
+              >
+                {link.name}
+              </Link>
+            ))}
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+
+      <style>{`
+        .navbar {
+          background-color: #ffffff;
+          border-bottom: 1px solid #e5e7eb;
+          position: sticky;
+          top: 0;
+          z-index: 1000;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+          font-family: 'Segoe UI', sans-serif;
+        }
+
+        .navbar-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0.8rem 1rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: wrap;
+        }
+
+        .navbar-logo {
+          font-size: 1.6rem;
+          font-weight: 800;
+          text-decoration: none;
+        }
+
+        .logo-gray {
+          color: #111827;
+        }
+
+        .logo-blue {
+          color: #1d4ed8;
+        }
+
+        .navbar-links {
+          display: flex;
+          gap: 1.5rem;
+        }
+
+        .nav-link {
+          text-decoration: none;
+          color: #374151;
+          font-size: 0.95rem;
+          font-weight: 500;
+          transition: color 0.2s ease-in-out;
+        }
+
+        .nav-link:hover {
+          color: #1d4ed8;
+        }
+
+        .active-link {
+          color: #1d4ed8;
+          font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+          .navbar-links {
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 0.8rem;
+          }
+        }
+      `}</style>
+    </>
   );
 };
 
